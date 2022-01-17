@@ -1,4 +1,3 @@
-from alpha_vantage.timeseries import TimeSeries
 from pandas.core.frame import DataFrame
 import pandas as pd
 import requests
