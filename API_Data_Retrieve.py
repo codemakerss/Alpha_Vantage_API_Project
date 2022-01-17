@@ -11,6 +11,15 @@ class StockTimeSeries(object):
     # Get Stock Information 
     # daily stock price 
     def GetDailyStockPrice(self, stock_id : str) -> DataFrame:
+        """return DataFrame type daily stock price 
+
+        The results will show daily stock price 
+
+        Parameters 
+        ----------
+        stock_id : str
+            Choose the stock you want to get daily data
+        """
         base_url = 'https://www.alphavantage.co/query?'
         df = pd.DataFrame()
         df_new = pd.DataFrame()
@@ -35,6 +44,15 @@ class StockTimeSeries(object):
 
     # weekly stock price
     def GetWeeklyStockPrice(self, stock_id : str) -> DataFrame:
+        """return DataFrame type weekly stock price 
+
+        The results will show weekly stock price 
+
+        Parameters 
+        ----------
+        stock_id : str
+            Choose the stock you want to get weekly data
+        """
         # https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=IBM&apikey=demo
         base_url = 'https://www.alphavantage.co/query?'
         df = pd.DataFrame()
@@ -60,6 +78,15 @@ class StockTimeSeries(object):
 
     # monthly stock price
     def GetMonthlyStockPrice(self, stock_id : str) -> DataFrame:
+        """return DataFrame type monthly stock price 
+
+        The results will show monthly stock price 
+
+        Parameters 
+        ----------
+        stock_id : str
+            Choose the stock you want to get monthly data
+        """
         # https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=IBM&apikey=demo
         base_url = 'https://www.alphavantage.co/query?'
         df = pd.DataFrame()
@@ -85,6 +112,18 @@ class StockTimeSeries(object):
 
     # intraday stock price - most recent 1 to 2 months data
     def GetIntradayStockPrice(self, stock_id : str, interval : str) -> DataFrame:
+        """return DataFrame type intraday stock price 
+
+        The results will show intraday stock price at certain 
+        interval you choose 
+
+        Parameters 
+        ----------
+        stock_id : str
+            Choose the stock you want to get intraday data
+        interval : str 
+            Choose "1min" or "5min" or "15min" or "30min" or "60min" at time interval for intraday data 
+        """
         # https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&outputsize=full&apikey=demo
         base_url = 'https://www.alphavantage.co/query?'
         df = pd.DataFrame()
@@ -117,6 +156,15 @@ class FundamentalData(object):
     # Company Information 
     # Currency, GrossProfit in last 5 years - from 2016/12/31 to 2020/12/31, Total Revenue, NetIncome
     def GetIncomeStatement(self, stock_id : str) -> DataFrame:
+        """return DataFrame type stock income statement
+
+        The results will show stock annual and quarterly income statement 
+
+        Parameters 
+        ----------
+        stock_id : str
+            Choose the stock you want to get income statement
+        """
         base_url = 'https://www.alphavantage.co/query?'
         df = pd.DataFrame()
         df_new = pd.DataFrame()
@@ -135,7 +183,17 @@ class FundamentalData(object):
         df_new['Symbol'] = stock_id
 
         return df_new
+
     def GetIncomeStatement_Original(self, stock_id : str) -> DataFrame:
+        """return DataFrame type stock income statement
+
+        The results will show stock annual and quarterly income statement 
+
+        Parameters 
+        ----------
+        stock_id : str
+            Choose the stock you want to get income statement
+        """
         base_url = 'https://www.alphavantage.co/query?'
         df_annual = pd.DataFrame()
         df_quarterly = pd.DataFrame()
@@ -165,6 +223,15 @@ class FundamentalData(object):
 
     # Symbol, Name, Exchange, Country, Sector, Industry, Fiscal year end, 52 Week high, 52 Week low, 50DayMovingAverage, 200DayMovingAverage, 
     def GetCompanyOverview(self, stock_id : str) -> DataFrame:
+        """return DataFrame type stock company overview 
+
+        The results will show stock company overview
+
+        Parameters 
+        ----------
+        stock_id : str
+            Choose the stock you want to get company overview 
+        """
         base_url = 'https://www.alphavantage.co/query?'
         df_new = pd.DataFrame()
         params = {'function': 'OVERVIEW', 'symbol': stock_id, 'apikey': self.apikey}
