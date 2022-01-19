@@ -3,8 +3,6 @@
 Alpha_Vantage_API is a package for collecting stocks price and 
 their related information.
 
-https://img.shields.io/badge/python-v3.6-brightgreen
-
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Alpha_Vantage_API.
