@@ -5,7 +5,7 @@ their related information.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Alpha_Vantage_API_Data.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Alpha-Vantage-API-Data.
 
 ```bash
 pip install Alpha-Vantage-API-Data
