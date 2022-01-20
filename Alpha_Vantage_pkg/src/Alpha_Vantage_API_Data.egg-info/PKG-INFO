@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Alpha-Vantage-API-Data
-Version: 1.0.1
+Version: 1.0.2
 Summary: This is an Aplha_Vantage_API data retrieving package
 Home-page: https://github.com/codemakerss/Alpha_Vantage_API_Project
 Author: Jeff Duan
@@ -31,7 +31,7 @@ pip install Alpha-Vantage-API-Data
 ## Example
 
 ```python
-from Alpha-Vantage-API-Data import API_Data_Retrieves
+from Alpha_Vantage_API_Data import API_Data_Retrieves
 
 # returns stock daily result 
 StockTimeSeries = API_Data_Retrieves.StockTimeSeries(apikey)
