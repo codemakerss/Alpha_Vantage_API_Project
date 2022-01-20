@@ -14,7 +14,7 @@ pip install Alpha-Vantage-API-Data
 ## Example
 
 ```python
-from Alpha-Vantage-API-Data import API_Data_Retrieves
+from Alpha_Vantage_API_Data import API_Data_Retrieves
 
 # returns stock daily result 
 StockTimeSeries = API_Data_Retrieves.StockTimeSeries(apikey)

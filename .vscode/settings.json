@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Alpha_Vantage_pkg/src"
+    ]
+}
