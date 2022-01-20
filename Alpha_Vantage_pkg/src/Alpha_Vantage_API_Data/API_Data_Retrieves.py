@@ -1,8 +1,32 @@
-from pandas.core.frame import DataFrame
-import pandas as pd
-import requests
-import xlwt
-import csv 
+import sys
+# Do not show error traceback
+sys.tracebacklimit=0
+# Check if all packages installed 
+try:
+    from pandas.core.frame import DataFrame
+    import pandas as pd
+except ImportError as e:
+    print("Package <pandas> needed to be installed before getting data ! ")
+    raise e
+
+try:
+    import requests
+except ImportError as e:
+    print("Package <requests> needed to be installed before getting data ! ")
+    raise e 
+
+try:
+    import xlwt
+except ImportError as e:
+    print("Package <xlwt> needed to be installed before getting data ! ")
+    raise e 
+
+try:
+    import csv 
+except ImportError as e:
+    print("Package <csv> needed to be installed before getting data ! ")
+    raise e 
+    
 class StockTimeSeries(object):
 
     def __init__(self, apikey : str):
