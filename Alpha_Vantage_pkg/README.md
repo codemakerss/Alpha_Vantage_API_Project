@@ -1,6 +1,6 @@
-# Alpha_Vantage_API_Data - Financial Data Retrieving
+# Alpha-Vantage-API-Data - Financial Data Retrieving
 
-Alpha_Vantage_API_Data is a package for collecting stocks price and 
+Alpha-Vantage-API-Data is a package for collecting stocks price and 
 their related information.
 
 ## Installation
@@ -8,13 +8,13 @@ their related information.
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Alpha_Vantage_API_Data.
 
 ```bash
-pip install Alpha_Vantage_API_Data
+pip install Alpha-Vantage-API-Data
 ```
 
 ## Example
 
 ```python
-from Alpha_Vantage_API_Data import API_Data_Retrieves
+from Alpha-Vantage-API-Data import API_Data_Retrieves
 
 # returns stock daily result 
 StockTimeSeries = API_Data_Retrieves.StockTimeSeries(apikey)
