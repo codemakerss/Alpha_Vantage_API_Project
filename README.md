@@ -14,15 +14,15 @@ pip install Alpha_Vantage_API_Data
 ## Example
 
 ```python
-from Alpha_Vantage_API_Data import API_Data_Retrieve
+from Alpha_Vantage_API_Data import API_Data_Retrieves
 
 # returns stock daily result 
-StockTimeSeries = API_Data_Retrieve.StockTimeSeries(apikey)
+StockTimeSeries = API_Data_Retrieves.StockTimeSeries(apikey)
 daily_data = StockTimeSeries.GetDailyStockPrice("IBM")
 print(daily_data)
 
 # returns company information
-FundamentalData = API_Data_Retrieve.FundamentalData(apikey)
+FundamentalData = API_Data_Retrieves.FundamentalData(apikey)
 stock_company_info = FundamentalData.CompanyInfo("AAPL)
 print(stock_company_info)
 ```
