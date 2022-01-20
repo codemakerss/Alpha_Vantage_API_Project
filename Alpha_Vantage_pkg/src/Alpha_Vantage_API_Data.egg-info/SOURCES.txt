@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/Alpha-Vantage-API-Data/API_Data_Retrieves.py
+src/Alpha-Vantage-API-Data/__init__.py
+src/Alpha_Vantage_API_Data.egg-info/PKG-INFO
+src/Alpha_Vantage_API_Data.egg-info/SOURCES.txt
+src/Alpha_Vantage_API_Data.egg-info/dependency_links.txt
+src/Alpha_Vantage_API_Data.egg-info/top_level.txt
