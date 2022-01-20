@@ -23,7 +23,7 @@ print(daily_data)
 
 # returns company information
 FundamentalData = API_Data_Retrieves.FundamentalData(apikey)
-stock_company_info = FundamentalData.CompanyInfo("AAPL)
+stock_company_info = FundamentalData.CompanyInfo("AAPL")
 print(stock_company_info)
 ```
 
