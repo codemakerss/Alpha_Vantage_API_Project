@@ -5,8 +5,7 @@
 Alpha-Vantage-API-Data is a package for collecting stocks price and 
 their related information.
 
-Notice : Please go visit https://www.alphavantage.co/support/#api-key to get your own
-free API key. 
+Notice : Please go visit [https://www.alphavantage.co/support/#api-key](https://www.alphavantage.co/support/#api-key) to get your own free API key. 
 
 ## Installation
 
@@ -18,7 +17,7 @@ pip install Alpha-Vantage-API-Data
 
 ## Update
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Alpha-Vantage-API-Data.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to upgrade Alpha-Vantage-API-Data.
 
 ```bash
 pip install --upgrade Alpha-Vantage-API-Data
