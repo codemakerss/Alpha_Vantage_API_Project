@@ -26,7 +26,23 @@ try:
 except ImportError as e:
     print("Package <csv> needed to be installed before getting data ! ")
     raise e 
-    
+
+try:
+    import tkinter as tk
+    from tkinter import filedialog 
+    from tkinter.filedialog import asksaveasfile
+except ImportError as e:
+    print("Package <tkinter> needed to be installed before getting data ! ")
+    raise e 
+
+try:
+    import platform
+except ImportError as e:
+    print("Package <platform> needed to be installed before getting data ! ")
+    raise e 
+
+import os 
+
 class StockTimeSeries(object):
 
     def __init__(self, apikey : str):
@@ -411,63 +427,53 @@ class FundamentalData(object):
 
         return df_company_overview
 
-# class FileOutputCSV(object):
+class FileOutputCSV(object):
 
-#     def __init__(self, apikey: str, StockTimeSeries : classmethod, FundamentalData : classmethod) -> None:
-#         self.apikey = apikey
-#         self.StockTimeSeries = StockTimeSeries(self.apikey)
-#         self.FundamentalData = FundamentalData(self.apikey)
+    def __init__(self, apikey: str, StockTimeSeries : classmethod, FundamentalData : classmethod) -> None:
+        self.apikey = apikey
+        self.StockTimeSeries = StockTimeSeries(self.apikey)
+        self.FundamentalData = FundamentalData(self.apikey)
         
-#     def CSV_Output_Original(self, stock_id : str) -> DataFrame:
-#         workbook = xlwt.Workbook()
-#         workbook.add_sheet('Daily Price')
-#         workbook.add_sheet('Weekly Price')
-#         workbook.add_sheet('Monthly Price')
-#         workbook.add_sheet('Intraday Price')
-#         workbook.add_sheet('Income Statement Annual')
-#         workbook.add_sheet('Income Statement Quarterly')
-#         workbook.add_sheet('Company Overview')
-#         workbook.add_sheet('Search Endpoint Results')
-#         workbook.add_sheet('US ListingDelisting Status')
-#         workbook.add_sheet('IPO Calender')
-#         workbook.save('Original_Data.xlsx')
-#         df = self.GetIncomeStatement_Original(stock_id)
-#         writer = pd.ExcelWriter('Original_Data.xlsx', engine='xlsxwriter')
-#         self.GetDailyStockPrice_Original(stock_id).to_excel(writer, sheet_name='Daily Price')
-#         self.GetWeeklyStockPrice(stock_id).to_excel(writer, sheet_name='Weekly Price')
-#         self.GetMonthlyStockPrice(stock_id).to_excel(writer, sheet_name='Monthly Price')
-#         self.GetIntradayStockPrice(stock_id).to_excel(writer, sheet_name='Intraday Price')
-#         df[0].to_excel(writer, sheet_name='Income Statement Annual')
-#         df[1].to_excel(writer, sheet_name='Income Statement Quarterly')
-#         self.GetCompanyOverview_Original(stock_id).to_excel(writer, sheet_name='Company Overview')
-#         self.GetSearchEndpoint(stock_id).to_excel(writer, sheet_name='Search Endpoint Results')
-#         self.GetListingDelistingStatus().to_excel(writer, sheet_name='US ListingDelisting Status')
-#         self.FindIPOCalender().to_excel(writer, sheet_name='IPO Calender')
-#         writer.save()
-    
-#     # CSV file - Filter data 
-#     def CSV_Output(self, stock_id : str) -> DataFrame:
-#         workbook = xlwt.Workbook()
-#         workbook.add_sheet('Daily Price')
-#         workbook.add_sheet('Weekly Price')
-#         workbook.add_sheet('Monthly Price')
-#         workbook.add_sheet('Intraday Price')
-#         workbook.add_sheet('Income Statement Annual Reports')
-#         workbook.add_sheet('Company Overview')
-#         workbook.add_sheet('Search Endpoint Results')
-#         workbook.add_sheet('US ListingDelisting Status')
-#         workbook.add_sheet('IPO Calender')
-#         workbook.save('Filter_Data.xlsx')
-#         writer = pd.ExcelWriter('Filter_Data.xlsx', engine='xlsxwriter')
-#         self.GetDailyStockPrice(stock_id).to_excel(writer, sheet_name='Daily Price')
-#         self.GetWeeklyStockPrice(stock_id).to_excel(writer, sheet_name='Weekly Price')
-#         self.GetMonthlyStockPrice(stock_id).to_excel(writer, sheet_name='Monthly Price')
-#         self.GetIntradayStockPrice(stock_id).to_excel(writer, sheet_name='Intraday Price')
-#         self.GetIncomeStatement(stock_id).to_excel(writer, sheet_name='Income Statement Annual Reports')
-#         self.GetCompanyOverview(stock_id).to_excel(writer, sheet_name='Company Overview')
-#         self.GetSearchEndpoint(stock_id).to_excel(writer, sheet_name='Search Endpoint Results')
-#         self.GetListingDelistingStatus().to_excel(writer, sheet_name='US ListingDelisting Status')
-#         self.FindIPOCalender().to_excel(writer, sheet_name='IPO Calender')
-#         writer.save()
+    # CSV file - Filter data 
+    def csv_output_stock(self, stock_id : str, stocktimeseries : str) -> str:
+        """return string of csv output successfully 
 
-   
+        The results will show the stock data in excel format
+
+        Parameters 
+        ----------
+        stock_id : str
+            Choose the stock you want to get company information
+        stocktimeseries : str
+            Choose the stock timeseries data from daily / weekly / monthly / intraday 
+        """
+        # default path is desktop directory 
+        desktop_path = os.environ['HOME']+"/desktop"
+        workbook = xlwt.Workbook()
+        workbook.add_sheet(stocktimeseries)
+       
+        workbook.save(desktop_path + '/' + stock_id + '_' + stocktimeseries +'_data.xlsx')
+
+        writer = pd.ExcelWriter('Filter_Data.xlsx', engine='xlsxwriter')
+        if stocktimeseries == "daily":
+            self.GetDailyStockPrice(stock_id).to_excel(writer, sheet_name= stock_id + ' Daily Price')
+        elif stocktimeseries == "weekly":
+            self.GetWeeklyStockPrice(stock_id).to_excel(writer, sheet_name= stock_id + ' Weekly Price')
+        elif stocktimeseries == "monthly":
+            self.GetMonthlyStockPrice(stock_id).to_excel(writer, sheet_name= stock_id + ' Monthly Price')
+        elif stocktimeseries == "intraday":
+            self.GetIntradayStockPrice(stock_id).to_excel(writer, sheet_name= stock_id + ' Intraday Price') 
+        else:
+            print(" Please choose the stock timeseries data from daily / weekly / monthly / intraday. ")
+        writer.save()
+        # self.GetIncomeStatement(stock_id).to_excel(writer, sheet_name='Income Statement Annual Reports')
+        # self.GetCompanyOverview(stock_id).to_excel(writer, sheet_name='Company Overview')
+        # self.GetSearchEndpoint(stock_id).to_excel(writer, sheet_name='Search Endpoint Results')
+        # self.GetListingDelistingStatus().to_excel(writer, sheet_name='US ListingDelisting Status')
+        # self.FindIPOCalender().to_excel(writer, sheet_name='IPO Calender')
+
+if __name__ == "__main__": 
+    StockTimeSeries = StockTimeSeries(apikey="YTK6VG8ZMVOB0Z0H")
+    #data_daily = StockTimeSeries.GetDailyStockPrice("AAPL")
+    data2 = StockTimeSeries.GetIntradayStockPrice("IBM", "5min")
+    print(data2)
